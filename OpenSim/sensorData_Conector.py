@@ -29,16 +29,20 @@ def write_data(filename,kopfzeile,data1, data2):
             i = i+1
             data.write(msg)
 
-huefte = load_data(6, 'data_huefte.sto')
-flex = load_data(6,'data_flex.sto')
-lift = load_data(6,'data_lift.sto')
-dance = load_data(6,'data_dance.sto')
+huefte = load_data(6, 'standing_straight.sto')
+wink = load_data(6,'wink_l.sto')
+lift = load_data(6,'lift_l.sto')
+lift_for = load_data(6,'lift_forw_l.sto')
+flex = load_data(6,'flex_l.sto')
 
-write_data('appendData_flex.sto',
-    "DataRate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.3-2021-08-27-4bc7ad9\nendheader\ntime\ttorso_imu\tpelvis_imu\thumerus_r_imu\tulna_r_imu\n",huefte,flex)
+write_data('appendData_wink_l.sto',
+    "DataRate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.3-2021-08-27-4bc7ad9\nendheader\ntime\ttorso_imu\tpelvis_imu\thumerus_l_imu\tulna_l_imu\n",huefte,wink)
 
-write_data('appendData_lift.sto',
-    "DataRate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.3-2021-08-27-4bc7ad9\nendheader\ntime\ttorso_imu\tpelvis_imu\thumerus_r_imu\tulna_r_imu\n",huefte,lift)
+write_data('appendData_lift_l.sto',
+    "DataRate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.3-2021-08-27-4bc7ad9\nendheader\ntime\ttorso_imu\tpelvis_imu\thumerus_l_imu\tulna_l_imu\n",huefte,lift)
 
-write_data('appendData_dance.sto',
-    "DataRate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.3-2021-08-27-4bc7ad9\nendheader\ntime\ttorso_imu\tpelvis_imu\thumerus_r_imu\tulna_r_imu\n",huefte,dance)
+write_data('appendData_lift_forw_l.sto',
+    "DataRate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.3-2021-08-27-4bc7ad9\nendheader\ntime\ttorso_imu\tpelvis_imu\thumerus_l_imu\tulna_l_imu\n",huefte,lift_for)
+
+write_data('appendData_flex_l.sto',
+    "DataRate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.3-2021-08-27-4bc7ad9\nendheader\ntime\ttorso_imu\tpelvis_imu\thumerus_l_imu\tulna_l_imu\n",huefte,flex)
