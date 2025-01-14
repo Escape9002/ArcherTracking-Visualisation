@@ -26,10 +26,40 @@ Supported Platforms:
  * have been made by Escape9002
  */
 #include <SparkFunMPU9250-DMP.h>
+#include <iostream>
+#include <tuple>
+#include <cmath>
+
+// Structure to represent a quaternion
+struct Quaternion {
+    double w, x, y, z;
+};
 
 #define SerialPort SerialUSB
 
 MPU9250_DMP imu;
+
+// Function to multiply two quaternions
+Quaternion quaternionMultiply(const Quaternion& q1, const Quaternion& q2) {
+    Quaternion result;
+    result.w = q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z;
+    result.x = q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y;
+    result.y = q1.w * q2.y - q1.x * q2.z + q1.y * q2.w + q1.z * q2.x;
+    result.z = q1.w * q2.z + q1.x * q2.y - q1.y * q2.x + q1.z * q2.w;
+    return result;
+}
+
+// Function to invert the roll axis in a quaternion
+Quaternion invertRoll(const Quaternion& quaternion) {
+    // Correction quaternion for 180° rotation around x-axis
+    Quaternion qCorrection = {0, 1, 0, 0};
+    return quaternionMultiply(qCorrection, quaternion);
+}
+
+// Helper function to print a quaternion
+void printQuaternion(const Quaternion& q) {
+    std::cout << "Quaternion: (" << q.w << ", " << q.x << ", " << q.y << ", " << q.z << ")\n";
+}
 
 void setup() 
 {
@@ -81,6 +111,14 @@ void printIMUData()
   float q1 = imu.calcQuat(imu.qx);
   float q2 = imu.calcQuat(imu.qy);
   float q3 = imu.calcQuat(imu.qz);
+  Quaternion qoriginal = {q0,q1,q2,q3};
+
+  Quaternion qCorrected = invertRoll(qoriginal);
+
+  q0 = qCorrected.w;
+  q1 = qCorrected.x;
+  q2 = qCorrected.y;
+  q3 = qCorrected.z;
 
   SerialPort.println( String(q0*100+100,0)+ "," + String(q1*100+100,0) + "," + String(q2*100+100,0)+ "," +String(q3*100+100,0));
  

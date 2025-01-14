@@ -29,20 +29,20 @@ def write_data(filename,kopfzeile,data1, data2):
             i = i+1
             data.write(msg)
 
-huefte = load_data(6, 'standing_straight.sto')
-wink = load_data(6,'wink_l.sto')
-lift = load_data(6,'lift_l.sto')
-lift_for = load_data(6,'lift_forw_l.sto')
-flex = load_data(6,'flex_l.sto')
+huefte = load_data(6, 'table_flat_30.sto')
+wink = load_data(6,'arm_move_2_all_direcions_inverse.sto')
+# lift = load_data(6,'lift_l.sto')
+# lift_for = load_data(6,'lift_forw_l.sto')
+# flex = load_data(6,'flex_l.sto')
 
-write_data('appendData_wink_l.sto',
+write_data('appendData_armMove.sto',
     "DataRate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.3-2021-08-27-4bc7ad9\nendheader\ntime\ttorso_imu\tpelvis_imu\thumerus_l_imu\tulna_l_imu\n",huefte,wink)
 
-write_data('appendData_lift_l.sto',
-    "DataRate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.3-2021-08-27-4bc7ad9\nendheader\ntime\ttorso_imu\tpelvis_imu\thumerus_l_imu\tulna_l_imu\n",huefte,lift)
+# write_data('appendData_lift_l.sto',
+#     "DataRate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.3-2021-08-27-4bc7ad9\nendheader\ntime\ttorso_imu\tpelvis_imu\thumerus_l_imu\tulna_l_imu\n",huefte,lift)
 
-write_data('appendData_lift_forw_l.sto',
-    "DataRate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.3-2021-08-27-4bc7ad9\nendheader\ntime\ttorso_imu\tpelvis_imu\thumerus_l_imu\tulna_l_imu\n",huefte,lift_for)
+# write_data('appendData_lift_forw_l.sto',
+#     "DataRate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.3-2021-08-27-4bc7ad9\nendheader\ntime\ttorso_imu\tpelvis_imu\thumerus_l_imu\tulna_l_imu\n",huefte,lift_for)
 
-write_data('appendData_flex_l.sto',
-    "DataRate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.3-2021-08-27-4bc7ad9\nendheader\ntime\ttorso_imu\tpelvis_imu\thumerus_l_imu\tulna_l_imu\n",huefte,flex)
+# write_data('appendData_flex_l.sto',
+#     "DataRate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.3-2021-08-27-4bc7ad9\nendheader\ntime\ttorso_imu\tpelvis_imu\thumerus_l_imu\tulna_l_imu\n",huefte,flex)

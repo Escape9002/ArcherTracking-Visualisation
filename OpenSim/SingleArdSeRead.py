@@ -1,7 +1,7 @@
-from numpy import unicode_
+# from numpy import unicode_
 import serial
 
-ser = serial.Serial('COM15', 115200, timeout = 1)
+ser = serial.Serial('COM9', 115200, timeout = 1)
 ser.flushInput()
 
 kopfzeile = "DataRate=50.000000\nDataType=Quaternion\nversion=3\nOpenSimVersion=4.3-2021-08-27-4bc7ad9\nendheader\ntime\tpelvis_imu\ttorso_imu\n" #\thumerus_l_imu\ttorso_imu\tulna_l_imu \thumerus_l_imu
@@ -12,7 +12,7 @@ msg = []
 
 print(timer * (1/10))
 
-with open('standingStraight.sto', 'w') as data:
+with open('Table.sto', 'w') as data:
     data.write(kopfzeile)
 
     for i in range(timer+1):
